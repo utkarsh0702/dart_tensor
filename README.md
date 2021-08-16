@@ -1,5 +1,5 @@
-# Dart Tensor
-<!--Image here-->
+<h1 align="center">Dart Tensor</h1>
+<p align="center"><img src="https://github.com/utkarsh0702/dart_tensor/blob/main/logo/dart_tensor.png" alt="logo" width="300" align="center"/></p>
 
 ## Description
 Dart Tensor is light weight dart plugin to help deal with multi-dimensional lists (or tensors). The project is the dart language edition of the NumPy package in python.
