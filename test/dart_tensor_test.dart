@@ -3,7 +3,7 @@ import 'package:dart_tensor/dart_tensor.dart';
 
 void main() {
   test("Add a tensor: ", () {
-    final dt = DartTensor();
+    // final dt = DartTensor();
     List dataList = List.generate(
         5,
         (j) => List.generate(
