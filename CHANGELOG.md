@@ -1,3 +1,8 @@
+## 1.0.1
+
++ Updated README.md file
++ Fixed a bug
+
 ## 1.0.0
 
 + Releasing the package with multiple operation

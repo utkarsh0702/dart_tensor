@@ -1,8 +1,8 @@
-<h1 align="center">Dart Tensor</h1>
+# **Dart Tensor**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) &nbsp;&nbsp;&nbsp; [![Pub Package](https://img.shields.io/pub/v/dart_tensor.svg)](https://pub.dev/packages/dart_tensor)
 
-<img src="https://github.com/utkarsh0702/dart_tensor/blob/main/logo/dart_tensor.png" alt="logo" width="300"/>
+![Logo](https://github.com/utkarsh0702/dart_tensor/blob/main/logo/dart_tensor.png?raw=true)
 
 ## Description
 Dart Tensor is light weight dart plugin to help deal with multi-dimensional lists (or tensors). The project is the dart language edition of the NumPy package in python.
