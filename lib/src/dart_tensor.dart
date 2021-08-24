@@ -85,7 +85,7 @@ class DartTensor {
   }
 
   // add variable or tensor
-  List add(List list, {int element = 0, var tensor}) {
+  List add(List list, {dynamic element = 0, var tensor}) {
     if (tensor == null && element == 0) {
       throw new Exception(
           "DartTensorException : Enter either an element or a tensor to add.");
@@ -132,7 +132,7 @@ class DartTensor {
   }
 
   // subtract variable or tensor
-  List sub(List list, {int element = 0, var tensor}) {
+  List sub(List list, {dynamic element = 0, var tensor}) {
     if (tensor == null && element == 0) {
       throw new Exception(
           "DartTensorException : Enter either an element or a tensor to subtract.");
@@ -179,7 +179,7 @@ class DartTensor {
   }
 
   // multiply variable or tensor
-  List mult(List list, {int element = 0, var tensor}) {
+  List mult(List list, {dynamic element = 0, var tensor}) {
     if (tensor == null && element == 0) {
       throw new Exception(
           "DartTensorException : Enter either an element or a tensor to multiply.");
@@ -226,7 +226,7 @@ class DartTensor {
   }
 
   // divide variable or tensor
-  List div(List list, {int element = 0, var tensor}) {
+  List div(List list, {dynamic element = 0, var tensor}) {
     if (tensor == null && element == 0) {
       throw new Exception(
           "DartTensorException : Enter either an element or a tensor to divide.");
@@ -273,7 +273,7 @@ class DartTensor {
   }
 
   // modulo variable or tensor
-  List modulo(List list, {int element = 0, var tensor}) {
+  List modulo(List list, {dynamic element = 0, var tensor}) {
     if (tensor == null && element == 0) {
       throw new Exception(
           "DartTensorException : Enter either an element or a tensor to modulo.");
@@ -320,7 +320,7 @@ class DartTensor {
   }
 
   // power of variable or tensor
-  List power(List list, {int element = 0, var tensor}) {
+  List power(List list, {dynamic element = 0, var tensor}) {
     if (tensor == null && element == 0) {
       throw new Exception(
           "DartTensorException : Enter either an element or a tensor for power.");
