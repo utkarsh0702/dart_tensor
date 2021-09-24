@@ -406,6 +406,23 @@ class DartTensor {
     return temp;
   }
 
+  // random sample tensor of uniform distribution
+  List rand(List shape) {
+    math.Random random = new math.Random();
+    int mult = 1;
+    for (int i = 0; i < shape.length; i++) {
+      mult = mult * shape[i] as int;
+    }
+    List temp = [];
+    var val;
+    for (int i = 0; i < mult; i++) {
+      val = random.nextDouble();
+      temp.add(val);
+    }
+    temp = generate(temp, shape);
+    return temp;
+  }
+
   // zero tensor
   List zeros(List shape, {String? dtype = 'int'}) {
     int mult = 1;

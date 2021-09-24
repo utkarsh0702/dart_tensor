@@ -72,6 +72,10 @@ void main() {
   data = dt.random([2, 5, 3, 5], start: 10, end: 50, dtype: 'double');
   print("Tensor of Random Data: $data");
 
+  // create a tensor of random uniform distribution
+  data = dt.rand([3, 5]);
+  print("Tensor of Uniform Distribution Data: $data");
+
   // tensor of zeros
   data = dt.zeros([2, 5, 3], dtype: 'int');
   print("Zeros Tensor: $data");
