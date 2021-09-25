@@ -32,11 +32,15 @@ Dart Tensor is light weight dart plugin to help deal with multi-dimensional list
 
 - ```power(listA, element, listB)``` returns the tensor after powering with either the element or the other tensor.
 
+- ```dot(listA, listB)``` returns the dot product of two tensors.
+
 - ```max(list)``` returns the maximum element from the tensor.
 
 - ```min(list)``` returns the minimum element from the tensor.
 
 - ```random(shape,start, end,dtype)``` returns a tensor of given shape with random values between start and end of given dtype. Available dtypes can be 'int' and 'double'.
+
+- ```rand(shape)``` returns a tensor of given shape with random values of uniform distribution.
 
 - ```zeros(shape,dtype)``` returns a tensor of zeros of given shape of given dtype. Available dtypes can be 'int' and 'double'.
 
@@ -276,6 +280,18 @@ powered tensor data: [[[0, 1, 4], [9, 16, 25], [36, 49, 64]], [[81, 100, 121], [
 676]], [[729, 784, 841], [900, 961, 1024], [1089, 1156, 1225]], [[1296, 1369, 1444], [1521, 1600, 1681], [1764, 1849, 1936]]]
 ```
 
+### Dot Product
+
+```dart
+data = dt.dot(dataList,dataList);
+print("dot product data: $data");
+```
+
+**Output**
+```
+Exception: Dot product is not applicable for more than 2 dimmensions and both tensors need to be of same shape. Got shapes: (5,3,3),(5,3,3).
+```
+
 ### Maximum element from all tensor values
 
 ```dart
@@ -310,6 +326,18 @@ print("Tensor of Random Data: $data");
 Tensor of Random Data: [[[[20, 27, 30, 17, 20], [19, 26, 20, 28, 11], [32, 14, 37, 16, 31]], [[11, 31, 28, 38, 14], [11, 22, 32, 27, 18], [20, 33, 27, 26, 23]], [[27, 25, 30, 33, 32], [32, 18, 28, 14, 23], [26, 21, 12, 13, 18]], [[28, 29, 16, 18, 14], [26, 10, 17, 12, 10], [32, 37, 22, 20, 10]], [[18, 12, 11, 24, 20], 
 [27, 21, 21, 32, 12], [13, 38, 12, 13, 11]]], [[[16, 18, 15, 16, 17], [19, 18, 34, 18, 20], [26, 25, 12, 14, 29]], [[22, 34, 23, 12, 39], [17, 32, 18, 23, 17], 
 [11, 10, 16, 38, 19]], [[18, 30, 16, 20, 21], [22, 22, 13, 11, 24], [28, 18, 10, 24, 22]], [[31, 13, 20, 18, 12], [22, 14, 10, 26, 11], [17, 28, 29, 32, 20]], [[24, 19, 26, 18, 33], [25, 19, 15, 11, 38], [16, 14, 38, 16, 33]]]]
+```
+
+### Uniform Distibution Random Value Tensor
+
+```dart
+data = dt.rand([3,2]);
+print("Tensor of Uniform Distibution values: $data");
+```
+
+**Output**
+```
+Tensor of Uniform Distibution values: [[ 0.14022471,  0.96360618], [ 0.37601032,  0.25528411], [ 0.49313049,  0.94909878]]
 ```
 
 ### Zero Tensor
