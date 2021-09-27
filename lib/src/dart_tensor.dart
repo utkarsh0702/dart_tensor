@@ -84,6 +84,24 @@ class DartTensor {
     return temp;
   }
 
+  // convert to 2D array
+  List cvt2D(List list, int row, int column) {
+    List flat = flatten(list);
+    List temp;
+    if (column == -1) {
+      column = (flat.length / row).round();
+      temp = generate(flat, [row, column]);
+      return temp;
+    }
+    if (flat.length == row * column) {
+      temp = generate(flat, [row, column]);
+      return temp;
+    } else {
+      throw new Exception(
+          'DartTensorException: Tensor of shape ${getDim(list)} cannot be convered to 2D Tensor with shape [$row,$column]');
+    }
+  }
+
   // add variable or tensor
   List add(List list, {dynamic element = 0, var tensor}) {
     if (tensor == null && element == 0) {
@@ -611,6 +629,22 @@ class DartTensor {
   List log(List list) {
     List shape = getDim(list);
     List temp = flatten(list).map((e) => math.log(e)).toList();
+    temp = generate(temp, shape);
+    return temp;
+  }
+
+  // rad2deg of tensor
+  List rad2deg(List list) {
+    List shape = getDim(list);
+    List temp = flatten(list).map((e) => (e * 180.0) / math.pi).toList();
+    temp = generate(temp, shape);
+    return temp;
+  }
+
+  // deg2rad of tensor
+  List deg2rad(List list) {
+    List shape = getDim(list);
+    List temp = flatten(list).map((e) => (e * math.pi) / 180.0).toList();
     temp = generate(temp, shape);
     return temp;
   }

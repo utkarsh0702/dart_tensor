@@ -1,3 +1,9 @@
-change2D
-uniformdistribution
-dot product
+gradient
+cross product
+trapezoidal rule
+normalized sinc
+lcm
+gcd
+sortRow
+cumsum : cummalative sum
+cumprod : cummalative product

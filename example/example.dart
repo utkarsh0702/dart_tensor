@@ -38,6 +38,10 @@ void main() {
   print("Reshaped tensor: $data");
   print("Reshaped shape: ${data.shape}");
 
+  // reshaping to 2D tensor
+  data = dt.cvt2D(dataList, 9, 5);
+  print("Reshaped 2D tensor: $data");
+
   // adding tensor or element
   data = dt.add(dataList, tensor: dataList);
   print("Added tensor data: $data");
@@ -140,6 +144,12 @@ void main() {
 
   // log of all elements
   print(dataList.log);
+
+  // radian to degree of all elements
+  print(dataList.rad2deg);
+
+  // degree to radian of all elements
+  print(dataList.deg2rad);
 
   // comparison from a variable
   data = dt.compareOfVariable(dataList, ">=", 12);
