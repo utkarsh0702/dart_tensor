@@ -385,7 +385,7 @@ class DartTensor {
   }
 
   // dot product between two tensors
-  dot(List list, List tensor) {
+  List dot(List list, List tensor) {
     List shape = getDim(list);
     List shape1 = getDim(tensor);
     if (shape.length == shape1.length) {

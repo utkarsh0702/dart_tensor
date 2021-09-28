@@ -20,6 +20,8 @@ Dart Tensor is light weight dart plugin to help deal with multi-dimensional list
 
 - ```reshape(list, shape)``` returns the reshaped tensor of the give shape.
 
+- ```cvt2D(list, row, column)``` returns the 2D reshaped tensor of the give row and column.
+
 - ```add(listA, element, listB)``` returns the tensor after addition with either the element or the other tensor.
 
 - ```sub(listA, element, listB)``` returns the tensor after subtraction with either the element or the other tensor.
@@ -73,6 +75,10 @@ Dart Tensor is light weight dart plugin to help deal with multi-dimensional list
 - ```round(list)``` returns the tensor with round value of respective tensor elements.
 
 - ```log(list)``` returns the tensor with natural log value of respective tensor elements.
+
+- ```rad2deg(list)``` returns the tensor with degree converted randian value of respective tensor elements.
+
+- ```deg2rad(list)``` returns the tensor with radian converted degree value of respective tensor elements.
 
 - ```compareOfVariable(list, operator, element)``` returns the tensor of boolean values after performing condition operation with element on every value of the tensor. Available operators are '<', '>', '<=', '>=', '==', '!='.
 
