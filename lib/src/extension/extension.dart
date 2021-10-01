@@ -32,6 +32,8 @@ extension DartTensorExtension on List {
   // return a tensor with powered values
   List power({int element = 0, var tensor}) =>
       DartTensor().power(this, element: element, tensor: tensor);
+  // return a tensor with the dot product
+  List dot(List tensor) => DartTensor().dot(this, tensor);
   // return the maximum value out of tensor
   dynamic get max => DartTensor().max(this);
   // return the minimum value out of tensor
@@ -40,6 +42,8 @@ extension DartTensorExtension on List {
   List random(List shape,
           {int start = 0, int end = 100, String? dtype = 'int'}) =>
       DartTensor().random(shape, start: start, end: end, dtype: dtype);
+  // return a tensor of uniform distributed random values
+  List rand(List shape) => DartTensor().rand(shape);
   // return a tensor of zeros
   List zeros(List shape, {String? dtype = 'int'}) =>
       DartTensor().zeros(shape, dtype: dtype);

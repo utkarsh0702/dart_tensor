@@ -62,6 +62,21 @@ void main() {
   data = dt.power(dataList, element: 2);
   print("powered tensor data: $data");
 
+  // dot product of two tensors
+  data = dt.dot([
+    [1, 2, 3, 4, 5],
+    [6, 7, 8, 9, 10],
+    [11, 12, 13, 14, 15]
+  ], [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [10, 11, 12],
+    [13, 14, 15]
+  ]);
+
+  print("Dot Product of two tensors: $data");
+
   // max of all elements
   print(dataList.max);
 
@@ -71,6 +86,10 @@ void main() {
   // create a tensor of random values between start and end
   data = dt.random([2, 5, 3, 5], start: 10, end: 50, dtype: 'double');
   print("Tensor of Random Data: $data");
+
+  // create a tensor of random uniform distribution
+  data = dt.rand([3, 5]);
+  print("Tensor of Uniform Distribution Data: $data");
 
   // tensor of zeros
   data = dt.zeros([2, 5, 3], dtype: 'int');
