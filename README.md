@@ -20,6 +20,8 @@ Dart Tensor is light weight dart plugin to help deal with multi-dimensional list
 
 - ```reshape(list, shape)``` returns the reshaped tensor of the give shape.
 
+- ```cvt2D(list, row, column)``` returns the 2D reshaped tensor of the give row and column.
+
 - ```add(listA, element, listB)``` returns the tensor after addition with either the element or the other tensor.
 
 - ```sub(listA, element, listB)``` returns the tensor after subtraction with either the element or the other tensor.
@@ -74,6 +76,10 @@ Dart Tensor is light weight dart plugin to help deal with multi-dimensional list
 
 - ```log(list)``` returns the tensor with natural log value of respective tensor elements.
 
+- ```rad2deg(list)``` returns the tensor with degree converted randian value of respective tensor elements.
+
+- ```deg2rad(list)``` returns the tensor with radian converted degree value of respective tensor elements.
+
 - ```compareOfVariable(list, operator, element)``` returns the tensor of boolean values after performing condition operation with element on every value of the tensor. Available operators are '<', '>', '<=', '>=', '==', '!='.
 
 - ```compareOfTensor(listA, operator, listB)``` returns the tensor of boolean values after performing condition operation between respective elements of listA and listB. Available operators are '<', '>', '<=', '>=', '==', '!='.
@@ -92,7 +98,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-    dart_tensor: '^1.0.0'
+    dart_tensor: '^1.0.2'
 ```
 
 
@@ -196,6 +202,20 @@ print(data.flatten);
 
 ```dart
 data = dt.reshape(dataList, [9, 5]);
+print("Reshaped tensor: $data");
+print("Reshaped shape: ${data.shape}");
+```
+
+**Output**
+```
+Reshaped tensor: [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14], [15, 16, 17, 18, 19], [20, 21, 22, 23, 24], [25, 26, 27, 28, 29], [30, 31, 32, 33, 34], [35, 36, 37, 38, 39], [40, 41, 42, 43, 44]]
+Reshaped shape: [9, 5]
+```
+
+### Reshaping to 2D tensor
+
+```dart
+data = dt.cvt2D(dataList, 9, 5);
 print("Reshaped tensor: $data");
 print("Reshaped shape: ${data.shape}");
 ```
@@ -384,6 +404,64 @@ print(dataList.prod);
 **Output**
 ```
 0
+```
+
+### Degree to Radian of all elements in Tensor
+
+```dart
+print(dataList.deg2rad);
+```
+
+**Output**
+```
+[[[0.         0.01745329 0.03490659]
+  [0.05235988 0.06981317 0.08726646]
+  [0.10471976 0.12217305 0.13962634]]
+
+ [[0.15707963 0.17453293 0.19198622]
+  [0.20943951 0.2268928  0.2443461 ]
+  [0.26179939 0.27925268 0.29670597]]
+
+ [[0.31415927 0.33161256 0.34906585]
+  [0.36651914 0.38397244 0.40142573]
+  [0.41887902 0.43633231 0.45378561]]
+
+ [[0.4712389  0.48869219 0.50614548]
+  [0.52359878 0.54105207 0.55850536]
+  [0.57595865 0.59341195 0.61086524]]
+
+ [[0.62831853 0.64577182 0.66322512]
+  [0.68067841 0.6981317  0.71558499]
+  [0.73303829 0.75049158 0.76794487]]]
+```
+
+### Radian to Degree of all elements in Tensor
+
+```dart
+print(dataList.rad2deg);
+```
+
+**Output**
+```
+[[[   0.           57.29577951  114.59155903]
+  [ 171.88733854  229.18311805  286.47889757]
+  [ 343.77467708  401.07045659  458.3662361 ]]
+
+ [[ 515.66201562  572.95779513  630.25357464]
+  [ 687.54935416  744.84513367  802.14091318]
+  [ 859.4366927   916.73247221  974.02825172]]
+
+ [[1031.32403124 1088.61981075 1145.91559026]
+  [1203.21136977 1260.50714929 1317.8029288 ]
+  [1375.09870831 1432.39448783 1489.69026734]]
+
+ [[1546.98604685 1604.28182637 1661.57760588]
+  [1718.87338539 1776.16916491 1833.46494442]
+  [1890.76072393 1948.05650344 2005.35228296]]
+
+ [[2062.64806247 2119.94384198 2177.2396215 ]
+  [2234.53540101 2291.83118052 2349.12696004]
+  [2406.42273955 2463.71851906 2521.01429858]]]
 ```
 
 ### Comparision of tensor with an element

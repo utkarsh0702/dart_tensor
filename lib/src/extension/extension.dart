@@ -6,6 +6,8 @@ extension DartTensorExtension on List {
       DartTensor().changeDtype(this, dtype);
   // return the tensor with changed dimensions
   List changeDim(int dim) => DartTensor().changeDim(this, dim);
+  // return a 2D tensor
+  List cvt2D(int row, int column) => DartTensor().cvt2D(this, row, column);
   // return the number of dimension of tensor
   int get ndim => DartTensor().ndim(this);
   // return the shape of tensor
@@ -78,6 +80,10 @@ extension DartTensorExtension on List {
   List get round => DartTensor().round(this);
   // return the natural log of all values in tensor
   List get log => DartTensor().log(this);
+  // return the degree of all radian values in tensor
+  List get rad2deg => DartTensor().rad2deg(this);
+  // return the radian of all degree values in tensor
+  List get deg2rad => DartTensor().deg2rad(this);
   // return a comparition of a variable with a tensor
   List compareOfVariable(String operator, var element) =>
       DartTensor().compareOfVariable(this, operator, element);
