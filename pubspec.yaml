@@ -1,6 +1,6 @@
 name: dart_tensor
 description: A flutter package to deal with multi-dimensional list ( or tensor). It include creation and manipulation of these tensors.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/utkarsh0702/dart_tensor
 
 environment:
