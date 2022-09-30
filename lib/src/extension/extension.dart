@@ -43,9 +43,9 @@ extension DartTensorExtension on List {
   // return a tensor of random values
   List random(List shape,
           {int start = 0, int end = 100, String? dtype = 'int'}) =>
-      DartTensor().random(shape, start: start, end: end, dtype: dtype);
+      DartTensor().random.random(shape, start: start, end: end, dtype: dtype);
   // return a tensor of uniform distributed random values
-  List rand(List shape) => DartTensor().rand(shape);
+  List rand(List shape) => DartTensor().random.rand(shape);
   // return a tensor of zeros
   List zeros(List shape, {String? dtype = 'int'}) =>
       DartTensor().zeros(shape, dtype: dtype);

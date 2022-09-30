@@ -1,9 +1,13 @@
+import 'package:dart_tensor/src/random.dart';
 import 'functionalities/functionalities.dart';
 import 'dart:math' as math;
 
 class DartTensor {
   // Default Constructor
-  const DartTensor();
+  DartTensor();
+
+  // Random Tensor Generation
+  Random random = Random();
 
   // change dtype
   List changeDtype(List list, String? dtype) {
@@ -442,49 +446,6 @@ class DartTensor {
     var minVal =
         flatten(list).reduce((curr, next) => curr < next ? curr : next);
     return minVal;
-  }
-
-  // tensor with random values
-  List random(List shape,
-      {int start = 0, int end = 100, String? dtype = 'int'}) {
-    math.Random random = new math.Random();
-    int mult = 1;
-    for (int i = 0; i < shape.length; i++) {
-      mult = mult * shape[i] as int;
-    }
-    List temp = [];
-    var val;
-    for (int i = 0; i < mult; i++) {
-      if (dtype == 'int') {
-        val = random.nextInt(end - start);
-        temp.add(val > start ? val : val + start);
-      } else if (dtype == 'double') {
-        val = random.nextDouble() * (end - start) + start;
-        temp.add(val);
-      } else {
-        throw new Exception(
-            "DartTensorException : Undefined dtype. Choose 'int' or 'double'.");
-      }
-    }
-    temp = generate(temp, shape);
-    return temp;
-  }
-
-  // random sample tensor of uniform distribution
-  List rand(List shape) {
-    math.Random random = new math.Random();
-    int mult = 1;
-    for (int i = 0; i < shape.length; i++) {
-      mult = mult * shape[i] as int;
-    }
-    List temp = [];
-    var val;
-    for (int i = 0; i < mult; i++) {
-      val = random.nextDouble();
-      temp.add(val);
-    }
-    temp = generate(temp, shape);
-    return temp;
   }
 
   // zero tensor
