@@ -88,11 +88,11 @@ void main() {
   print(dataList.min);
 
   // create a tensor of random values between start and end
-  data = dt.random([2, 5, 3, 5], start: 10, end: 50, dtype: 'double');
+  data = dt.random.random([2, 5, 3, 5], start: 10, end: 50, dtype: 'double');
   print("Tensor of Random Data: $data");
 
   // create a tensor of random uniform distribution
-  data = dt.rand([3, 5]);
+  data = dt.random.rand([3, 5]);
   print("Tensor of Uniform Distribution Data: $data");
 
   // tensor of zeros

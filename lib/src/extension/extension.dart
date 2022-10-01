@@ -1,6 +1,7 @@
 import 'package:dart_tensor/dart_tensor.dart';
 
 extension DartTensorExtension on List {
+  // ----------------- Basic Tensor Functions-----------------------//
   // return the tensor with changed datatype
   List changeDtype({String? dtype = 'int'}) =>
       DartTensor().changeDtype(this, dtype);
@@ -40,50 +41,6 @@ extension DartTensorExtension on List {
   dynamic get max => DartTensor().max(this);
   // return the minimum value out of tensor
   dynamic get min => DartTensor().min(this);
-  // return a tensor of random values
-  List random(List shape,
-          {int start = 0, int end = 100, String? dtype = 'int'}) =>
-      DartTensor().random.random(shape, start: start, end: end, dtype: dtype);
-  // return a tensor of uniform distributed random values
-  List rand(List shape) => DartTensor().random.rand(shape);
-  // return a tensor of zeros
-  List zeros(List shape, {String? dtype = 'int'}) =>
-      DartTensor().zeros(shape, dtype: dtype);
-  // return a tensor of ones
-  List ones(List shape, {String? dtype = 'int'}) =>
-      DartTensor().ones(shape, dtype: dtype);
-  // return the sum of all values in tensor
-  dynamic get sum => DartTensor().sum(this);
-  // return the product of all values in tensor
-  dynamic get prod => DartTensor().prod(this);
-  // return the sqrt of all values in tensor
-  List get sqrt => DartTensor().sqrt(this);
-  // return the sin of all values in tensor
-  List get sin => DartTensor().sin(this);
-  // return the cos of all values in tensor
-  List get cos => DartTensor().cos(this);
-  // return the tan of all values in tensor
-  List get tan => DartTensor().tan(this);
-  // return the asin of all values in tensor
-  List get asin => DartTensor().asin(this);
-  // return the acos of all values in tensor
-  List get acos => DartTensor().acos(this);
-  // return the atan of all values in tensor
-  List get atan => DartTensor().atan(this);
-  // return the abs of all values in tensor
-  List get abs => DartTensor().abs(this);
-  // return the floor of all values in tensor
-  List get floor => DartTensor().floor(this);
-  // return the ceil of all values in tensor
-  List get ceil => DartTensor().ceil(this);
-  // return the round of all values in tensor
-  List get round => DartTensor().round(this);
-  // return the natural log of all values in tensor
-  List get log => DartTensor().log(this);
-  // return the degree of all radian values in tensor
-  List get rad2deg => DartTensor().rad2deg(this);
-  // return the radian of all degree values in tensor
-  List get deg2rad => DartTensor().deg2rad(this);
   // return a comparition of a variable with a tensor
   List compareOfVariable(String operator, var element) =>
       DartTensor().compareOfVariable(this, operator, element);
@@ -95,4 +52,61 @@ extension DartTensorExtension on List {
       DartTensor().concatenate(this, tensor, axis: axis);
   // return a completely sorted tensor
   List sort({bool? desc = false}) => DartTensor().sort(this, desc: desc);
+  // return a tensor of zeros
+  List zeros(List shape, {String? dtype = 'int'}) =>
+      DartTensor().zeros(shape, dtype: dtype);
+  // return a tensor of ones
+  List ones(List shape, {String? dtype = 'int'}) =>
+      DartTensor().ones(shape, dtype: dtype);
+  // return the sum of all values in tensor
+  dynamic get sum => DartTensor().sum(this);
+  // return the product of all values in tensor
+  dynamic get prod => DartTensor().prod(this);
+  // ----------------------------------------------------------------//
+
+  // ----------------- Random Tensor Functions-----------------------//
+  // return a tensor of random values
+  List random(List shape,
+          {int start = 0, int end = 100, String? dtype = 'int'}) =>
+      DartTensor().random.random(shape, start: start, end: end, dtype: dtype);
+  // return a tensor of uniform distributed random values
+  List rand(List shape) => DartTensor().random.rand(shape);
+  // tensor with random values from tensor n number of times
+  dynamic choice(List list, {int times = 1}) =>
+      DartTensor().random.choice(list, times: times);
+  // shuffle elements in a tensor
+  List shuffle(List list) => DartTensor().random.shuffle(list);
+  // ----------------------------------------------------------------//
+
+  // ----------------- Mathematical Tensor Functions-----------------------//
+  // return the sqrt of all values in tensor
+  List get sqrt => DartTensor().math.sqrt(this);
+  // return the sin of all values in tensor
+  List get sin => DartTensor().math.sin(this);
+  // return the cos of all values in tensor
+  List get cos => DartTensor().math.cos(this);
+  // return the tan of all values in tensor
+  List get tan => DartTensor().math.tan(this);
+  // return the asin of all values in tensor
+  List get asin => DartTensor().math.asin(this);
+  // return the acos of all values in tensor
+  List get acos => DartTensor().math.acos(this);
+  // return the atan of all values in tensor
+  List get atan => DartTensor().math.atan(this);
+  // return the abs of all values in tensor
+  List get abs => DartTensor().math.abs(this);
+  // return the floor of all values in tensor
+  List get floor => DartTensor().math.floor(this);
+  // return the ceil of all values in tensor
+  List get ceil => DartTensor().math.ceil(this);
+  // return the round of all values in tensor
+  List get round => DartTensor().math.round(this);
+  // return the natural log of all values in tensor
+  List get log => DartTensor().math.log(this);
+  // return the negative values  of all values in tensor
+  List get neg => DartTensor().math.neg(this);
+  // return the degree of all radian values in tensor
+  List get rad2deg => DartTensor().math.rad2deg(this);
+  // return the radian of all degree values in tensor
+  List get deg2rad => DartTensor().math.deg2rad(this);
 }
