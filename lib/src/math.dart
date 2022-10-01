@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_init_to_null
+
 import 'functionalities/functionalities.dart';
 import 'dart:math' as math;
 
@@ -129,5 +131,92 @@ class Math {
     List temp = __flatten(list).map((e) => (e * math.pi) / 180.0).toList();
     temp = generate(temp, shape);
     return temp;
+  }
+
+  // gcd of a tensor
+  int gcd(List list) {
+    list = __flatten(list);
+    bool result = list.every((element) => (element is int));
+    if (!result) {
+      throw new Exception(
+          "DartTensorException : GCD operation can only be performed on Integer Tensor.");
+    }
+    var minVal = list.reduce((curr, next) => curr < next ? curr : next);
+    for (int i = minVal; i >= 1; i--) {
+      int j;
+      for (j = 0; j < list.length; ++j) {
+        if (list[j] % i != 0) {
+          break;
+        }
+      }
+      if (j == list.length) {
+        return i;
+      }
+    }
+    return 1;
+  }
+
+  // lcm of a tensor
+  int __gcd(int a, int b) {
+    while (b != 0) {
+      var t = b;
+      b = a % t;
+      a = t;
+    }
+    return a;
+  }
+
+  int lcm(List list) {
+    list = __flatten(list);
+    bool result = list.every((element) => (element is int));
+    if (!result) {
+      throw new Exception(
+          "DartTensorException : LCM operation can only be performed on Integer Tensor.");
+    }
+    int b = list[0];
+    for (int i = 1; i < list.length; i++) {
+      b = ((list[i] * b) ~/ __gcd(list[i], b)).toInt();
+    }
+    return b;
+  }
+
+  // cumulative sum of elements in tensor
+  List cumsum(List list, {dtype = null}) {
+    list = __flatten(list);
+    if (dtype != null) {
+      if (dtype == 'int') {
+        list = list.map((e) => e.toInt()).toList();
+      } else if (dtype == 'double') {
+        list = list.map((e) => e.toDouble()).toList();
+      } else {
+        throw new Exception("DartTensorException : Invalid dtype provided.");
+      }
+    }
+    num sum = 0;
+    list = list.map((e) {
+      sum += e;
+      e = sum;
+    }).toList();
+    return list;
+  }
+
+  // cumulative sum of elements in tensor
+  List cumprod(List list, {dtype = null}) {
+    list = __flatten(list);
+    if (dtype != null) {
+      if (dtype == 'int') {
+        list = list.map((e) => e.toInt()).toList();
+      } else if (dtype == 'double') {
+        list = list.map((e) => e.toDouble()).toList();
+      } else {
+        throw new Exception("DartTensorException : Invalid dtype provided.");
+      }
+    }
+    num prod = 1;
+    list = list.map((e) {
+      prod *= e;
+      e = prod;
+    }).toList();
+    return list;
   }
 }

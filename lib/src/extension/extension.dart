@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_init_to_null
+
 import 'package:dart_tensor/dart_tensor.dart';
 
 extension DartTensorExtension on List {
@@ -7,8 +9,6 @@ extension DartTensorExtension on List {
       DartTensor().changeDtype(this, dtype);
   // return the tensor with changed dimensions
   List changeDim(int dim) => DartTensor().changeDim(this, dim);
-  // return a 2D tensor
-  List cvt2D(int row, int column) => DartTensor().cvt2D(this, row, column);
   // return the number of dimension of tensor
   int get ndim => DartTensor().ndim(this);
   // return the shape of tensor
@@ -35,8 +35,6 @@ extension DartTensorExtension on List {
   // return a tensor with powered values
   List power({int element = 0, var tensor}) =>
       DartTensor().power(this, element: element, tensor: tensor);
-  // return a tensor with the dot product
-  List dot(List tensor) => DartTensor().dot(this, tensor);
   // return the maximum value out of tensor
   dynamic get max => DartTensor().max(this);
   // return the minimum value out of tensor
@@ -109,4 +107,23 @@ extension DartTensorExtension on List {
   List get rad2deg => DartTensor().math.rad2deg(this);
   // return the radian of all degree values in tensor
   List get deg2rad => DartTensor().math.deg2rad(this);
+  // return the GCD of all values in tensor
+  int get gcd => DartTensor().math.gcd(this);
+  // return the LCM of all values in tensor
+  int get lcm => DartTensor().math.lcm(this);
+  // return the cumulative sum of the elements in tensor
+  List cumsum(List list, {dtype = null}) =>
+      DartTensor().math.cumsum(list, dtype: dtype);
+  // return the cumulative product of the elements in tensor
+  List cumprod(List list, {dtype = null}) =>
+      DartTensor().math.cumprod(list, dtype: dtype);
+
+  // ----------------------------------------------------------------//
+
+  // ----------------- Algebra Tensor Functions-----------------------//
+  // return a 2D tensor
+  List cvt2D(int row, int column) =>
+      DartTensor().linalg.cvt2D(this, row, column);
+  // return a tensor with the dot product
+  List dot(List tensor) => DartTensor().linalg.dot(this, tensor);
 }
