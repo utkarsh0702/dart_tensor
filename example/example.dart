@@ -39,7 +39,7 @@ void main() {
   print("Reshaped shape: ${data.shape}");
 
   // reshaping to 2D tensor
-  data = dt.cvt2D(dataList, 9, 5);
+  data = dt.linalg.cvt2D(dataList, 9, 5);
   print("Reshaped 2D tensor: $data");
 
   // adding tensor or element
@@ -67,7 +67,7 @@ void main() {
   print("powered tensor data: $data");
 
   // dot product of two tensors
-  data = dt.dot([
+  data = dt.linalg.dot([
     [1, 2, 3, 4, 5],
     [6, 7, 8, 9, 10],
     [11, 12, 13, 14, 15]
