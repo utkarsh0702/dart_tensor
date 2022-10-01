@@ -46,40 +46,37 @@ class Random {
     temp = generate(temp, shape);
     return temp;
   }
-}
 
-//--------------------New------------------------
-// tensor with random values from list n number of times
-dynamic choice(List list, {int times = 1}) {
-  for (int j = getDim(list).length; j > 1; j--) {
-    list = list.expand((i) => i).toList();
-  }
+  // tensor with random values from list n number of times
+  dynamic choice(List list, {int times = 1}) {
+    for (int j = getDim(list).length; j > 1; j--) {
+      list = list.expand((i) => i).toList();
+    }
 
-  math.Random random = new math.Random();
-  var element;
-  List outputList = [];
-  for (int i = 0; i < times; i++) {
-    element = list[random.nextInt(list.length)];
-    if (times > 1) {
-      outputList.add(element);
+    math.Random random = new math.Random();
+    var element;
+    List outputList = [];
+    for (int i = 0; i < times; i++) {
+      element = list[random.nextInt(list.length)];
+      if (times > 1) {
+        outputList.add(element);
+      }
+    }
+    if (times == 1) {
+      return element;
+    } else {
+      return outputList;
     }
   }
-  if (times == 1) {
-    return element;
-  } else {
-    return outputList;
-  }
-}
 
 // shuffle elements in a list
-List shuffle(List list) {
-  var shape = getDim(list);
-  for (int j = getDim(list).length; j > 1; j--) {
-    list = list.expand((i) => i).toList();
+  List shuffle(List list) {
+    var shape = getDim(list);
+    for (int j = getDim(list).length; j > 1; j--) {
+      list = list.expand((i) => i).toList();
+    }
+    list.shuffle();
+    list = generate(list, shape);
+    return list;
   }
-  list.shuffle();
-  list = generate(list, shape);
-  return list;
 }
-
-//--------------------------End ------------------------
