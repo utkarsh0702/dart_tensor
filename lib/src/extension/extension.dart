@@ -126,4 +126,14 @@ extension DartTensorExtension on List {
       DartTensor().linalg.cvt2D(this, row, column);
   // return a tensor with the dot product
   List dot(List tensor) => DartTensor().linalg.dot(this, tensor);
+  // return the transpose of a 2D tensor
+  List get T => DartTensor().linalg.transpose(this);
+  // return the transpose of a 2D tensor
+  double get det => DartTensor().linalg.det(this);
+  // return the transpose of a 2D tensor
+  List get adjoint => DartTensor().linalg.adjoint(this);
+  // return the transpose of a 2D tensor
+  List get inverse => DartTensor().linalg.inverse(this);
+  // return the transpose of a 2D tensor
+  double get trace => DartTensor().linalg.trace(this);
 }

@@ -1,7 +1,10 @@
+import 'dart_tensor.dart';
 import 'functionalities/functionalities.dart';
+import 'dart:math' as maths;
 
 class LinearAlgebra {
-  const LinearAlgebra();
+  LinearAlgebra();
+  DartTensor __dt = DartTensor();
 
   // flattening of tensor
   List __flatten(List list) {
@@ -57,7 +60,7 @@ class LinearAlgebra {
     }
   }
 
-  // convert to 2D array
+  // convert to 2D tensor
   List cvt2D(List list, int row, int column) {
     List flat = __flatten(list);
     List temp;
@@ -73,5 +76,165 @@ class LinearAlgebra {
       throw new Exception(
           'DartTensorException: Tensor of shape ${getDim(list)} cannot be convered to 2D Tensor with shape [$row,$column]');
     }
+  }
+
+  // calculate determinant of a 2D tensor
+
+  List __cut(List list, int m, int n) {
+    List cm = __dt.zeros([m, n]);
+
+    int dr = 0;
+    for (int r = 0; r < m; r++) {
+      int dc = 0;
+      if (r == m) {
+        continue;
+      }
+      for (int c = 0; c < n; c++) {
+        if (c == n) {
+          continue;
+        }
+        cm[dr][dc] = list[r][c];
+        dc++;
+      }
+      dr++;
+    }
+
+    return cm;
+  }
+
+  List transpose(List list) {
+    List shape = getDim(list);
+    List toReturn = __dt.zeros(shape);
+    for (int i = 0; i < shape[0]; i++) {
+      for (int j = 0; j < shape[1]; j++) {
+        toReturn[j][i] = list[i][j];
+      }
+    }
+    return toReturn;
+  }
+
+  double det(List list) {
+    List shape = getDim(list);
+    if (shape.length > 2 || shape.length < 2) {
+      throw new Exception(
+          'DartTensorException: Deteminant only possible for 2D Tensor. Found tensor shape: $shape');
+    } else if (shape[0] == 2 && shape[1] == 2) {
+      return list[0][0] * list[1][1] - list[1][0] * list[0][1];
+    }
+
+    int bestColumnCount = 0;
+    int bestColumn = -1;
+    for (int c = 0; c < shape[1]; c++) {
+      int count = 0;
+      for (int r = 0; r < shape[0]; r++) {
+        if (list[r][c] == 0.0) {
+          count++;
+        }
+      }
+      if (count >= bestColumnCount) {
+        bestColumnCount = count;
+        bestColumn = c;
+      }
+    }
+
+    int bestRowCount = 0;
+    int bestRow = -1;
+    for (int r = 0; r < shape[0]; r++) {
+      int count = 0;
+      for (int c = 0; c < shape[1]; c++) {
+        if (list[r][c] == 0.0) {
+          count++;
+        }
+      }
+      if (count >= bestRowCount) {
+        bestRowCount = count;
+        bestRow = r;
+      }
+    }
+
+    if (bestColumnCount > bestRowCount) {
+      double det = 0.0;
+      int c = bestColumn;
+      for (int r = 0; r < shape[0]; r++) {
+        double v = list[r][c];
+        if (v != 0.0) {
+          List sub = __cut(list, r, c);
+          var coFactor = maths.pow(-1, r + c) * this.det(sub);
+          det += v * coFactor;
+        }
+      }
+      return det;
+    } else {
+      double det = 0.0;
+      int r = bestRow;
+      for (int c = 0; c < shape[1]; c++) {
+        double v = list[r][c];
+        if (v != 0.0) {
+          List sub = __cut(list, r, c);
+          var coFactor = maths.pow(-1, r + c) * this.det(sub);
+          det += v * coFactor;
+        }
+      }
+      return det;
+    }
+  }
+
+  // Adjoint of a 2D Tensor
+  List adjoint(List list) {
+    List shape = getDim(list);
+    if (shape[0] != shape[1]) {
+      throw new Exception(
+          'DartTensorException: Adjoint can only be calculated with 2D Tensor with same number of rows and columns.');
+    }
+    if (shape[0] < 3) {
+      throw new Exception(
+          'DartTensorException: Adjoint can only be calculated with 2D Tensor with less than 4 rows and columns.');
+    }
+    List cf = __dt.zeros(shape);
+    for (int r = 0; r < shape[0]; r++) {
+      for (int c = 0; c < shape[1]; c++) {
+        List sub = __cut(list, r, c);
+        var v = maths.pow(-1, r + c) * det(sub);
+        cf[r][c] = v;
+      }
+    }
+    return cf;
+  }
+
+  // inverse of a 2D Tensor
+  List inverse(List list) {
+    List shape = getDim(list);
+    double d = det(list);
+    if (d == 0.0) {
+      throw new Exception(
+          'DartTensorException: Inverse cannot be calculates as deternimant is 0.');
+    }
+
+    if (shape[0] == 2) {
+      List i = __dt.zeros(shape);
+      i[0][0] = list[1][1];
+      i[1][1] = list[0][0];
+      i[0][1] = -1.0 * list[0][1];
+      i[1][0] = -1.0 * list[1][0];
+      return __dt.div(list, element: d);
+    } else {
+      List i = adjoint(list);
+      i = transpose(i);
+      return __dt.div(i, element: d);
+    }
+  }
+
+  // Trace of a 2D Tensor
+  double trace(List list) {
+    List shape = getDim(list);
+    if (shape[0] != shape[1]) {
+      throw new Exception(
+          'DartTensorException: Adjoint can only be calculated with 2D Tensor with same number of rows and columns.');
+    }
+    double tr = 0.0;
+    for (int i = 0; i < shape[0]; i++) {
+      tr += list[i][i];
+    }
+    return tr;
   }
 }
