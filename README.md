@@ -8,6 +8,8 @@
 Dart Tensor is light weight dart plugin to help deal with multi-dimensional lists (or tensors). The project is the dart language edition of the NumPy package in python.
 
 ## Operations
+**Basic Tensor Operation Functions**
+
 - ```changeDtype(list,dtype)``` returns the tensor with transformed datatype. Available dtypes can be 'int', 'double' and 'string'
 
 - ```changeDim(list,n)``` returns the tensor with `n` dimensions
@@ -19,8 +21,6 @@ Dart Tensor is light weight dart plugin to help deal with multi-dimensional list
 - ```flatten(list)``` returns 1-D tensor from any dimension tensor.
 
 - ```reshape(list, shape)``` returns the reshaped tensor of the give shape.
-
-- ```cvt2D(list, row, column)``` returns the 2D reshaped tensor of the give row and column.
 
 - ```add(listA, element, listB)``` returns the tensor after addition with either the element or the other tensor.
 
@@ -34,15 +34,9 @@ Dart Tensor is light weight dart plugin to help deal with multi-dimensional list
 
 - ```power(listA, element, listB)``` returns the tensor after powering with either the element or the other tensor.
 
-- ```dot(listA, listB)``` returns the dot product of two tensors.
-
 - ```max(list)``` returns the maximum element from the tensor.
 
 - ```min(list)``` returns the minimum element from the tensor.
-
-- ```random(shape,start, end,dtype)``` returns a tensor of given shape with random values between start and end of given dtype. Available dtypes can be 'int' and 'double'.
-
-- ```rand(shape)``` returns a tensor of given shape with random values of uniform distribution.
 
 - ```zeros(shape,dtype)``` returns a tensor of zeros of given shape of given dtype. Available dtypes can be 'int' and 'double'.
 
@@ -51,6 +45,26 @@ Dart Tensor is light weight dart plugin to help deal with multi-dimensional list
 - ```sum(list)``` returns the sum of all tensor elements.
 
 - ```prod(list)``` returns the product of all tensor elements.
+
+- ```compareOfVariable(list, operator, element)``` returns the tensor of boolean values after performing condition operation with element on every value of the tensor. Available operators are '<', '>', '<=', '>=', '==', '!='.
+
+- ```compareOfTensor(listA, operator, listB)``` returns the tensor of boolean values after performing condition operation between respective elements of listA and listB. Available operators are '<', '>', '<=', '>=', '==', '!='.
+
+- ```concatenate(listA, listB, axis)``` returns the tensor after performing concatenation between listA and listB based on the provided axis value.
+
+- ```sort(listA, desc)``` returns the tensor after sorting all the elements in the tensor. If desc is true then the tensor is sorted in decreasing order.
+
+**Random Tensor Functions**
+
+- ```random(shape, start, end, dtype)``` returns a tensor of given shape with random values between start and end of given dtype. Available dtypes can be 'int' and 'double'.
+
+- ```rand(shape)``` returns a tensor of given shape with random values of uniform distribution.
+
+- ```choice(shape, choice)``` return random value if the *choice = 1* and return a 1D Tensor if *choice = n*.
+
+- ```shuffle(list)``` return a tensor with same shape with all the suffled values form input tensor.
+
+**Mathematical Tensor Functions**
 
 - ```sqrt(list)``` returns the tensor with square root value of respective tensor elements.
 
@@ -80,13 +94,29 @@ Dart Tensor is light weight dart plugin to help deal with multi-dimensional list
 
 - ```deg2rad(list)``` returns the tensor with radian converted degree value of respective tensor elements.
 
-- ```compareOfVariable(list, operator, element)``` returns the tensor of boolean values after performing condition operation with element on every value of the tensor. Available operators are '<', '>', '<=', '>=', '==', '!='.
+- ```gcd(list)``` return the GCD of all values in a tensor.
 
-- ```compareOfTensor(listA, operator, listB)``` returns the tensor of boolean values after performing condition operation between respective elements of listA and listB. Available operators are '<', '>', '<=', '>=', '==', '!='.
+- ```lcm(list)``` return the LCM of all values in a tensor.
 
-- ```concatenate(listA, listB, axis)``` returns the tensor after performing concatenation between listA and listB based on the provided axis value.
+- ```cumsum(list, dtype)``` return the cumulative sum of the elements in tensor
 
-- ```sort(listA, desc)``` returns the tensor after sorting all the elements in the tensor. If desc is true then the tensor is sorted in decreasing order.
+- ```cumprod(list, dtype)``` return the cumulative product of the elements in tensor
+
+**Linear Algebra Tensor Functions**
+
+- ```cvt2D(list, row, column)``` returns the 2D reshaped tensor of the give row and column.
+
+- ```dot(listA, listB)``` returns the dot product of two tensors.
+
+- ```transpose(list)``` return the transpose of a 2D tensor
+
+- ```det(list)``` return the determinant of a 2D tensor
+
+- ```adjoint(list)``` return the adjoint of a 2D tensor
+
+- ```inverse(list)``` return the inverse of a 2D tensor
+
+- ```trace(list)``` return the trace of a 2D tensor
 
 ## Installation
 
@@ -337,7 +367,7 @@ print(dataList.min);
 ### Random Value Tensor
 
 ```dart
-data = dt.random([2, 5, 3, 5], start: 10, end: 50, dtype: 'int');
+data = dt.random.random([2, 5, 3, 5], start: 10, end: 50, dtype: 'int');
 print("Tensor of Random Data: $data");
 ```
 
@@ -351,7 +381,7 @@ Tensor of Random Data: [[[[20, 27, 30, 17, 20], [19, 26, 20, 28, 11], [32, 14, 3
 ### Uniform Distibution Random Value Tensor
 
 ```dart
-data = dt.rand([3,2]);
+data = dt.random.rand([3,2]);
 print("Tensor of Uniform Distibution values: $data");
 ```
 
