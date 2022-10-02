@@ -166,4 +166,15 @@ void main() {
   // Completely sorted data
   data = dt.sort(dataList, desc: true);
   print("Sorted Data: $data");
+
+  // randomly genrating 2D tensor
+  List matrix = dt.random.random([3, 3]);
+  print("2D Tensor: $matrix");
+
+  // Performing Matrix operations 2D Tensor
+  print(matrix.det);
+  print(matrix.T);
+  print(matrix.adjoint);
+  print(matrix.inverse);
+  print(matrix.trace);
 }
