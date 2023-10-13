@@ -170,11 +170,5 @@ void main() {
   // randomly genrating 2D tensor
   List matrix = dt.random.random([3, 3]);
   print("2D Tensor: $matrix");
-
-  // Performing Matrix operations 2D Tensor
-  print(matrix.det);
-  print(matrix.T);
-  print(matrix.adjoint);
-  print(matrix.inverse);
-  print(matrix.trace);
+  print("Matrix Trace: ${matrix.trace}");
 }
