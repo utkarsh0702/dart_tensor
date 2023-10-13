@@ -1,3 +1,8 @@
+## 1.0.4
+
++ Added `utility` file
++ Fixed the version bug and upgraded all the dependencies
+
 ## 1.0.3
 
 + Seperated functions into sub classes like `math`, `random` and `linalg`
