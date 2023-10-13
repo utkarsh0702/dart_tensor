@@ -1,10 +1,12 @@
-import 'dart_tensor.dart';
 import 'functionalities/functionalities.dart';
 import 'dart:math' as maths;
 
+import 'utils.dart';
+
 class LinearAlgebra {
-  LinearAlgebra();
-  DartTensor __dt = DartTensor();
+  LinearAlgebra() {}
+
+  Utils utils = Utils();
 
   // flattening of tensor
   List __flatten(List list) {
@@ -81,7 +83,7 @@ class LinearAlgebra {
   // calculate determinant of a 2D tensor
 
   List __cut(List list, int m, int n) {
-    List cm = __dt.zeros([m, n]);
+    List cm = utils.zeros([m, n]);
 
     int dr = 0;
     for (int r = 0; r < m; r++) {
@@ -104,7 +106,7 @@ class LinearAlgebra {
 
   List transpose(List list) {
     List shape = getDim(list);
-    List toReturn = __dt.zeros(shape);
+    List toReturn = utils.zeros(shape);
     for (int i = 0; i < shape[0]; i++) {
       for (int j = 0; j < shape[1]; j++) {
         toReturn[j][i] = list[i][j];
@@ -156,7 +158,7 @@ class LinearAlgebra {
       double det = 0.0;
       int c = bestColumn;
       for (int r = 0; r < shape[0]; r++) {
-        double v = list[r][c];
+        double v = list[r][c].toDouble();
         if (v != 0.0) {
           List sub = __cut(list, r, c);
           var coFactor = maths.pow(-1, r + c) * this.det(sub);
@@ -168,7 +170,7 @@ class LinearAlgebra {
       double det = 0.0;
       int r = bestRow;
       for (int c = 0; c < shape[1]; c++) {
-        double v = list[r][c];
+        double v = list[r][c].toDouble();
         if (v != 0.0) {
           List sub = __cut(list, r, c);
           var coFactor = maths.pow(-1, r + c) * this.det(sub);
@@ -190,7 +192,7 @@ class LinearAlgebra {
       throw new Exception(
           'DartTensorException: Adjoint can only be calculated with 2D Tensor with less than 4 rows and columns.');
     }
-    List cf = __dt.zeros(shape);
+    List cf = utils.zeros(shape);
     for (int r = 0; r < shape[0]; r++) {
       for (int c = 0; c < shape[1]; c++) {
         List sub = __cut(list, r, c);
@@ -211,16 +213,16 @@ class LinearAlgebra {
     }
 
     if (shape[0] == 2) {
-      List i = __dt.zeros(shape);
+      List i = utils.zeros(shape);
       i[0][0] = list[1][1];
       i[1][1] = list[0][0];
       i[0][1] = -1.0 * list[0][1];
       i[1][0] = -1.0 * list[1][0];
-      return __dt.div(list, element: d);
+      return utils.div(list, element: d);
     } else {
       List i = adjoint(list);
       i = transpose(i);
-      return __dt.div(i, element: d);
+      return utils.div(i, element: d);
     }
   }
 

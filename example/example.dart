@@ -16,12 +16,12 @@ void main() {
   print("Original List : $dataList");
 
   // change to new datatype
-  List data = dt.changeDtype(
+  List data = dt.utils.changeDtype(
       dataList, 'double'); // available options arte: 'int', 'double', 'string'
   print(data);
 
   // change number of dimensions
-  data = dt.changeDim(dataList, 4);
+  data = dt.utils.changeDim(dataList, 4);
   print(data);
 
   // get number of dimensions
@@ -34,7 +34,7 @@ void main() {
   print(data.flatten);
 
   // reshaping the tensor
-  data = dt.reshape(dataList, [9, 5]);
+  data = dt.utils.reshape(dataList, [9, 5]);
   print("Reshaped tensor: $data");
   print("Reshaped shape: ${data.shape}");
 
@@ -43,27 +43,27 @@ void main() {
   print("Reshaped 2D tensor: $data");
 
   // adding tensor or element
-  data = dt.add(dataList, tensor: dataList);
+  data = dt.utils.add(dataList, tensor: dataList);
   print("Added tensor data: $data");
 
   // subtract tensor or element
-  data = dt.sub(dataList, element: 20);
+  data = dt.utils.sub(dataList, element: 20);
   print("subtracted tensor data: $data");
 
   // multiply tensor or element
-  data = dt.mult(dataList, tensor: dataList);
+  data = dt.utils.mult(dataList, tensor: dataList);
   print("multiplied tensor data: $data");
 
   // divide tensor or element
-  data = dt.div(dataList, element: 7);
+  data = dt.utils.div(dataList, element: 7);
   print("divided tensor data: $data");
 
   // modulo of tensor or element
-  data = dt.modulo(dataList, element: 8);
+  data = dt.utils.modulo(dataList, element: 8);
   print("modulated tensor data: $data");
 
   // power of tensor or element
-  data = dt.power(dataList, element: 2);
+  data = dt.utils.power(dataList, element: 2);
   print("powered tensor data: $data");
 
   // dot product of two tensors
@@ -96,11 +96,11 @@ void main() {
   print("Tensor of Uniform Distribution Data: $data");
 
   // tensor of zeros
-  data = dt.zeros([2, 5, 3], dtype: 'int');
+  data = dt.utils.zeros([2, 5, 3], dtype: 'int');
   print("Zeros Tensor: $data");
 
   // tensor of ones
-  data = dt.ones([2, 5, 3], dtype: 'double');
+  data = dt.utils.ones([2, 5, 3], dtype: 'double');
   print("Ones Tensor: $data");
 
   // sum of all elements
@@ -152,19 +152,19 @@ void main() {
   print(dataList.deg2rad);
 
   // comparison from a variable
-  data = dt.compareOfVariable(dataList, ">=", 12);
+  data = dt.utils.compareOfVariable(dataList, ">=", 12);
   print("Compared Data: $data");
 
   // comparison from a tensor
-  data = dt.compareOfTensor(dataList, "==", dataList);
+  data = dt.utils.compareOfTensor(dataList, "==", dataList);
   print("Compared Data: $data");
 
   // concatenation of 2 tensors
-  data = dt.concatenate(dataList, dataList, axis: 2);
+  data = dt.utils.concatenate(dataList, dataList, axis: 2);
   print("Concatenated Data: $data");
 
   // Completely sorted data
-  data = dt.sort(dataList, desc: true);
+  data = dt.utils.sort(dataList, desc: true);
   print("Sorted Data: $data");
 
   // randomly genrating 2D tensor

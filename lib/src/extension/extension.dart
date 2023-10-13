@@ -6,60 +6,60 @@ extension DartTensorExtension on List {
   // ----------------- Basic Tensor Functions-----------------------//
   // return the tensor with changed datatype
   List changeDtype({String? dtype = 'int'}) =>
-      DartTensor().changeDtype(this, dtype);
+      DartTensor().utils.changeDtype(this, dtype);
   // return the tensor with changed dimensions
-  List changeDim(int dim) => DartTensor().changeDim(this, dim);
+  List changeDim(int dim) => DartTensor().utils.changeDim(this, dim);
   // return the number of dimension of tensor
-  int get ndim => DartTensor().ndim(this);
+  int get ndim => DartTensor().utils.ndim(this);
   // return the shape of tensor
-  List get shape => DartTensor().shape(this);
+  List get shape => DartTensor().utils.shape(this);
   // return a flattend list
-  List get flatten => DartTensor().flatten(this);
+  List get flatten => DartTensor().utils.flatten(this);
   // return a reshaped tensor
-  List reshape(List shape) => DartTensor().reshape(this, shape);
+  List reshape(List shape) => DartTensor().utils.reshape(this, shape);
   // return a tensor with added values
   List add({int element = 0, var tensor}) =>
-      DartTensor().add(this, element: element, tensor: tensor);
+      DartTensor().utils.add(this, element: element, tensor: tensor);
   // return a tensor with subtracted values
   List sub({int element = 0, var tensor}) =>
-      DartTensor().sub(this, element: element, tensor: tensor);
+      DartTensor().utils.sub(this, element: element, tensor: tensor);
   // return a tensor with multiplicated values
   List mult({int element = 0, var tensor}) =>
-      DartTensor().mult(this, element: element, tensor: tensor);
+      DartTensor().utils.mult(this, element: element, tensor: tensor);
   // return a tensor with divided values
   List div({int element = 0, var tensor}) =>
-      DartTensor().div(this, element: element, tensor: tensor);
+      DartTensor().utils.div(this, element: element, tensor: tensor);
   // return a tensor with modulated values
   List modulo({int element = 0, var tensor}) =>
-      DartTensor().modulo(this, element: element, tensor: tensor);
+      DartTensor().utils.modulo(this, element: element, tensor: tensor);
   // return a tensor with powered values
   List power({int element = 0, var tensor}) =>
-      DartTensor().power(this, element: element, tensor: tensor);
+      DartTensor().utils.power(this, element: element, tensor: tensor);
   // return the maximum value out of tensor
-  dynamic get max => DartTensor().max(this);
+  dynamic get max => DartTensor().utils.max(this);
   // return the minimum value out of tensor
-  dynamic get min => DartTensor().min(this);
+  dynamic get min => DartTensor().utils.min(this);
   // return a comparition of a variable with a tensor
   List compareOfVariable(String operator, var element) =>
-      DartTensor().compareOfVariable(this, operator, element);
+      DartTensor().utils.compareOfVariable(this, operator, element);
   // return a comparition of a tensor with a tensor
   List compareOfTensor(String operator, List tensor) =>
-      DartTensor().compareOfTensor(this, operator, tensor);
+      DartTensor().utils.compareOfTensor(this, operator, tensor);
   // return concatenate of two tensor
   List concatenate(List tensor, {int axis = 0}) =>
-      DartTensor().concatenate(this, tensor, axis: axis);
+      DartTensor().utils.concatenate(this, tensor, axis: axis);
   // return a completely sorted tensor
-  List sort({bool? desc = false}) => DartTensor().sort(this, desc: desc);
+  List sort({bool? desc = false}) => DartTensor().utils.sort(this, desc: desc);
   // return a tensor of zeros
   List zeros(List shape, {String? dtype = 'int'}) =>
-      DartTensor().zeros(shape, dtype: dtype);
+      DartTensor().utils.zeros(shape, dtype: dtype);
   // return a tensor of ones
   List ones(List shape, {String? dtype = 'int'}) =>
-      DartTensor().ones(shape, dtype: dtype);
+      DartTensor().utils.ones(shape, dtype: dtype);
   // return the sum of all values in tensor
-  dynamic get sum => DartTensor().sum(this);
+  dynamic get sum => DartTensor().utils.sum(this);
   // return the product of all values in tensor
-  dynamic get prod => DartTensor().prod(this);
+  dynamic get prod => DartTensor().utils.prod(this);
   // ----------------------------------------------------------------//
 
   // ----------------- Random Tensor Functions-----------------------//
