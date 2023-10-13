@@ -128,7 +128,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-    dart_tensor: '^1.0.2'
+    dart_tensor: '^1.0.4'
 ```
 
 
@@ -174,7 +174,7 @@ List data;
 ### Change Datatype
 
 ```dart
-data = dt.changeDtype(dataList, 'double');
+data = dt.utils.changeDtype(dataList, 'double');
 print(data);
 ```
 
@@ -186,7 +186,7 @@ print(data);
 ### Change Dimensions
 
 ```dart
-data = dt.changeDim(dataList, 4);
+data = dt.utils.changeDim(dataList, 4);
 print(data);
 ```
 
@@ -231,7 +231,7 @@ print(data.flatten);
 ### Reshaping the tensor
 
 ```dart
-data = dt.reshape(dataList, [9, 5]);
+data = dt.utils.reshape(dataList, [9, 5]);
 print("Reshaped tensor: $data");
 print("Reshaped shape: ${data.shape}");
 ```
@@ -245,7 +245,7 @@ Reshaped shape: [9, 5]
 ### Reshaping to 2D tensor
 
 ```dart
-data = dt.cvt2D(dataList, 9, 5);
+data = dt.utils.cvt2D(dataList, 9, 5);
 print("Reshaped tensor: $data");
 print("Reshaped shape: ${data.shape}");
 ```
@@ -259,7 +259,7 @@ Reshaped shape: [9, 5]
 ### Addition
 
 ```dart
-data = dt.add(dataList, tensor: dataList);
+data = dt.utils.add(dataList, tensor: dataList);
 print("Added tensor data: $data");
 ```
 
@@ -271,7 +271,7 @@ Added tensor data: [[[0, 2, 4], [6, 8, 10], [12, 14, 16]], [[18, 20, 22], [24, 2
 ### Subtraction
 
 ```dart
-data = dt.sub(dataList, element: 20);
+data = dt.utils.sub(dataList, element: 20);
 print("subtracted tensor data: $data");
 ```
 
@@ -283,7 +283,7 @@ subtracted tensor data: [[[-20, -19, -18], [-17, -16, -15], [-14, -13, -12]], [[
 ### Multiplication
 
 ```dart
-data = dt.mult(dataList, tensor: dataList);
+data = dt.utils.mult(dataList, tensor: dataList);
 print("multiplied tensor data: $data");
 ```
 
@@ -295,7 +295,7 @@ multiplied tensor data: [[[0, 1, 4], [9, 16, 25], [36, 49, 64]], [[81, 100, 121]
 ### Division
 
 ```dart
-data = dt.div(dataList, element: 7);
+data = dt.utils.div(dataList, element: 7);
 print("divided tensor data: $data");
 ```
 
@@ -308,7 +308,7 @@ divided tensor data: [[[0.0, 0.14285714285714285, 0.2857142857142857], [0.428571
 ### Modulo
 
 ```dart
-data = dt.modulo(dataList, element: 8);
+data = dt.utils.modulo(dataList, element: 8);
 print("modulated tensor data: $data");
 ```
 
@@ -320,7 +320,7 @@ modulated tensor data: [[[0, 1, 2], [3, 4, 5], [6, 7, 0]], [[1, 2, 3], [4, 5, 6]
 ### Power
 
 ```dart
-data = dt.power(dataList, element: 2);
+data = dt.utils.power(dataList, element: 2);
 print("powered tensor data: $data");
 ```
 
@@ -333,7 +333,7 @@ powered tensor data: [[[0, 1, 4], [9, 16, 25], [36, 49, 64]], [[81, 100, 121], [
 ### Dot Product
 
 ```dart
-data = dt.dot(dataList,dataList);
+data = dt.utils.dot(dataList,dataList);
 print("dot product data: $data");
 ```
 
