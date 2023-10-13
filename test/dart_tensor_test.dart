@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:dart_tensor/dart_tensor.dart';
 
 void main() {

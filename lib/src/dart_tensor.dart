@@ -20,8 +20,7 @@ class DartTensor {
     List shape = getDim(list);
     var flat;
     if (shape.length > 7) {
-      throw new Exception(
-          "DartTensorException : Only possible till 7 dimensions.");
+      throw Exception("DartTensorException : Only possible till 7 dimensions.");
     } else {
       flat = flatten(list);
       if (dtype == 'int') {
