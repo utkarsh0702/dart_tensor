@@ -106,15 +106,19 @@ class LinearAlgebra {
 
   List transpose(List list) {
     List shape = getDim(list);
+    if(shape.length != 2){
+      throw new Exception("only support 2-D Tensor");
+    }
+    shape = shape.reversed.toList(growable: true);
     List toReturn = utils.zeros(shape);
     for (int i = 0; i < shape[0]; i++) {
       for (int j = 0; j < shape[1]; j++) {
-        toReturn[j][i] = list[i][j];
+        toReturn[i][j] = list[j][i];
       }
     }
     return toReturn;
   }
-
+  
   double det(List list) {
     List shape = getDim(list);
     if (shape.length > 2 || shape.length < 2) {
